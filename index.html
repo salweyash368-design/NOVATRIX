@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NOVATRIX | Order Management</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #08090d;
+            color: #f5f5f7;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #a78bfa;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .card, form, .order {
+            background: #11131b;
+            padding: 18px;
+            border: 1px solid #292b38;
+            border-radius: 12px;
+        }
+
+        form {
+            display: grid;
+            gap: 12px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input, select {
+            background: #08090d;
+            color: white;
+            border: 1px solid #353746;
+        }
+
+        button {
+            border: none;
+            background: #a78bfa;
+            color: #100d19;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .order {
+            margin-top: 12px;
+        }
+
+        .order p {
+            overflow-wrap: anywhere;
+        }
+
+        .order select {
+            margin: 10px 0;
+        }
+
+        .note {
+            color: #b6b7c4;
+            font-size: 13px;
+        }
+
+        @media (max-width: 500px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h1>NOVATRIX</h1>
+    <h2>Order Management</h2>
+
+    <p class="note">
+        Prototype dashboard — अभी इसमें वास्तविक सर्वर या लॉगिन नहीं है।
+    </p>
+
+    <div class="stats">
+        <div class="card">
+            <p>Total Orders</p>
+            <h2 id="totalOrders">0</h2>
+        </div>
+
+        <div class="card">
+            <p>Pending Orders</p>
+            <h2 id="pendingOrders">0</h2>
+        </div>
+
+        <div class="card">
+            <p>Completed Orders</p>
+            <h2 id="completedOrders">0</h2>
+        </div>
+    </div>
+
+    <h2>Add New Order</h2>
+
+    <form id="orderForm">
+        <input id="customerName"
+               placeholder="Customer Name"
+               maxlength="100"
+               required>
+
+        <input id="customerEmail"
+               type="email"
+               placeholder="Customer Email"
+               maxlength="254"
+               required>
+
+        <input id="projectName"
+               placeholder="Project Name"
+               maxlength="150"
+               required>
+
+        <input id="orderAmount"
+               type="number"
+               placeholder="Amount in INR"
+               min="0"
+               max="100000000"
+               step="0.01"
+               required>
+
+        <button type="submit">Add Order</button>
+    </form>
+
+    <h2>All Orders</h2>
+
+    <input id="searchOrders"
+           placeholder="Search customer or project..."
+           aria-label="Search orders">
+
+    <div id="ordersList" aria-live="polite"></div>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
